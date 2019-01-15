@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import Toolbar from './Toolbar'
+import Inbox from './Inbox'
 
 class App extends Component {
 
   state = { messages: []}
 
 
-  async componentDidMount = () => {
+  componentDidMount = async () => {
     const response = await fetch('http://localhost:8082/api/messages')
-    const messages = await responst.json()
+    const messages = await response.json()
     this.setState(prevState => {
       return { messages }
     })
