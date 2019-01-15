@@ -6,7 +6,7 @@ class Inbox extends Component {
   renderMessages = () => {
     return this.props.messages.map((message,i) => {
       return (
-        <Message {...message} />
+        <Message changeProp={this.props.changeProp} key={message.id} onCheck={this.props.onCheck} {...message} />
       )
     })
   }
