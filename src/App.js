@@ -42,10 +42,27 @@ class App extends Component {
     console.log(json)
   }
 
+  isSelected = () => {
+    return this.state.messages.some(message => message.selected)
+  }
+
+  toggleAllSelect = () => {
+    if (this.isSelected()) {
+      this.setState(prevState => {
+        return { messages: prevState.messages.map(message => ({...message, selected:false})) }
+      })
+    } else {
+      this.setState(prevState => {
+        return { messages: prevState.messages.map(message => ({...message, selected:true})) }
+      })
+    }
+  }
+
   changeProp = (e) => {
     e.persist()
     const msgIndex = e.target.id - 1
     const type = e.target.dataset.fieldtype
+    console.log('changing prop', type)
     this.setState(prevState => {
       return { messages: [...prevState.messages.slice(0, msgIndex),
                         { ...prevState.messages[msgIndex], [type]: !prevState.messages[msgIndex][type] },
@@ -57,7 +74,7 @@ class App extends Component {
     return (
       <main>
       <div className='container'>
-          <Toolbar countUnread={this.countUnread} messages={this.state.messages}/>
+          <Toolbar toggleAllSelect={this.toggleAllSelect} isSelected={this.isSelected} countUnread={this.countUnread} messages={this.state.messages}/>
           <Inbox changeProp={this.changeProp} messages={this.state.messages}/>
         </div>
       </main>

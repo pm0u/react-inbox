@@ -17,7 +17,7 @@ class Message extends Component {
           <div className="col-xs-1">
             <div className="row">
               <div className="col-xs-2">
-                <input type="checkbox" id={this.props.id} data-fieldtype='selected' defaultChecked={this.props.selected} onClick={this.props.changeProp}/>
+                <input type="checkbox" id={this.props.id} data-fieldtype='selected' checked={`${this.props.selected? 'checked': ''}`} onChange={this.props.changeProp}/>
               </div>
               <div className="col-xs-2">
                 <i id={this.props.id} data-fieldtype='starred' onClick={this.props.changeProp} className={`star fa ${this.props.starred? 'fa-star' : 'fa-star-o'}`}></i>
