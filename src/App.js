@@ -4,7 +4,7 @@ import Inbox from './Inbox'
 
 class App extends Component {
 
-  state = { messages: []}
+  state = { messages: [] }
 
 
   componentDidMount = async () => {
@@ -16,10 +16,11 @@ class App extends Component {
   }
 
 
+
   render() {
     return (
-        <div className='container'>
-        <Toolbar />
+      <div className='container'>
+        <Toolbar messages={this.state.messages}/>
         <Inbox messages={this.state.messages}/>
         </div>
     )
