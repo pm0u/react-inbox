@@ -18,12 +18,10 @@ class App extends Component {
 
   render() {
     return (
-      <main>
         <div className='container'>
         <Toolbar />
         <Inbox messages={this.state.messages}/>
         </div>
-      </main>
     )
   }
 }
