@@ -21,7 +21,7 @@ class App extends Component {
       <main>
         <div className='container'>
         <Toolbar />
-        <Inbox />
+        <Inbox messages={this.state.messages}/>
         </div>
       </main>
     )
