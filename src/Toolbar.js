@@ -8,7 +8,7 @@ class Toolbar extends Component {
       <div className="row toolbar">
         <div className="col-md-12">
           <p className="pull-right">
-            <span className="badge badge">2</span>
+            <span className="badge badge">{this.props.countUnread()}</span>
             unread messages
           </p>
 

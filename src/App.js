@@ -6,13 +6,19 @@ class App extends Component {
 
   state = { messages: [] }
 
-
   componentDidMount = async () => {
     const response = await fetch('http://localhost:8082/api/messages')
     const messages = await response.json()
     this.setState(prevState => {
       return { messages }
     })
+  }
+
+  countUnread = () => {
+    return this.state.messages.reduce((accum,curr) => {
+      if (curr.read === false) accum++
+      return accum
+    }, 0)
   }
 
   updateMessages = async (messageIds, command, param, value) => {
@@ -51,7 +57,7 @@ class App extends Component {
     return (
       <main>
       <div className='container'>
-          <Toolbar messages={this.state.messages}/>
+          <Toolbar countUnread={this.countUnread} messages={this.state.messages}/>
           <Inbox changeProp={this.changeProp} messages={this.state.messages}/>
         </div>
       </main>
