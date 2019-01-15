@@ -13,14 +13,14 @@ class Message extends Component {
   render() {
     return (
       <>
-        <div key={this.props.id} className={`row message ${this.props.read? 'read' : 'unread'} ${this.props.selected? 'selected' : ''}`}>
+        <div  className={`row message ${this.props.read? 'read' : 'unread'} ${this.props.selected? 'selected' : ''}`}>
           <div className="col-xs-1">
             <div className="row">
               <div className="col-xs-2">
-                <input type="checkbox" checked={this.props.selected}/>
+                <input type="checkbox" id={this.props.id} data-fieldtype='selected' defaultChecked={this.props.selected} onClick={this.props.changeProp}/>
               </div>
               <div className="col-xs-2">
-                <i className={`star fa ${this.props.starred? 'fa-star' : 'fa-star-o'}`}></i>
+                <i id={this.props.id} data-fieldtype='starred' onClick={this.props.changeProp} className={`star fa ${this.props.starred? 'fa-star' : 'fa-star-o'}`}></i>
               </div>
             </div>
           </div>
