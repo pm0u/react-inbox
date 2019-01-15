@@ -15,7 +15,6 @@ class Toolbar extends Component {
     }
   }
 
-
   render() {
     return ( <
       >
@@ -26,29 +25,29 @@ class Toolbar extends Component {
             <i className="fa fa-plus"></i>
           </a>
           <button className="btn btn-default" onClick={this.props.toggleAllSelect} >
-            <i className={`fa ${this.props.isSelected()? 'fa-minus-square-o' : 'fa-square-o'}`}></i>
+            <i className={`fa ${this.props.howSelected().includes('some')? this.props.howSelected().includes('all')? 'fa-check-square-o' : 'fa-minus-square-o' : 'fa-square-o'}`}></i>
           </button>
           {this.makeUnread()}
 
-          <button className="btn btn-default">Mark As Read</button>
+          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >Mark As Read</button>
 
-          <button className="btn btn-default">Mark As Unread</button>
+          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >Mark As Unread</button>
 
-          <select className="form-control label-select">
+          <select className="form-control label-select" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <select className="form-control label-select">
+          <select className="form-control label-select" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
             <option>Remove label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <button className="btn btn-default">
+          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
             <i className="fa fa-trash-o"></i>
           </button>
         </div>
