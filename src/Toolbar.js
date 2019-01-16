@@ -14,6 +14,19 @@ class Toolbar extends Component {
       )
     }
   }
+  disableButtons = () => {
+    return {...(!this.props.messages.some(message => message.selected) && {disabled:'disabled'})}
+  }
+
+  changeSelectIcon = () => {
+    if (this.props.messages.every(message => message.selected)) {
+      return 'fa-check-square-o'
+    } else if (this.props.messages.some(message => message.selected)) {
+      return 'fa-minus-square-o'
+    } else {
+      return 'fa-square-o'
+    }
+  }
 
   render() {
     return ( <
@@ -25,29 +38,29 @@ class Toolbar extends Component {
             <i className="fa fa-plus"></i>
           </a>
           <button className="btn btn-default" onClick={this.props.toggleAllSelect} >
-            <i className={`fa ${this.props.howSelected().includes('some')? this.props.howSelected().includes('all')? 'fa-check-square-o' : 'fa-minus-square-o' : 'fa-square-o'}`}></i>
+            <i className={`fa ${this.changeSelectIcon()}`}></i>
           </button>
           {this.makeUnread()}
 
-          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} id='read' onClick={this.props.changeReadState}>Mark As Read</button>
+          <button className="btn btn-default" {...this.disableButtons()} id='read' onClick={this.props.changeReadState}>Mark As Read</button>
 
-          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} id='unread' onClick={this.props.changeReadState}>Mark As Unread</button>
+          <button className="btn btn-default" {...this.disableButtons()} id='unread' onClick={this.props.changeReadState}>Mark As Unread</button>
 
-          <select className="form-control label-select" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
+          <select onChange={this.props.addLabel} className="form-control label-select" {...this.disableButtons()} >
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <select className="form-control label-select" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
+          <select onChange={this.props.removeLabel} className="form-control label-select" {...this.disableButtons()} >
             <option>Remove label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
             <option value="gschool">gschool</option>
           </select>
 
-          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
+          <button onClick={this.props.delMsg} className="btn btn-default" {...this.disableButtons()} >
             <i className="fa fa-trash-o"></i>
           </button>
         </div>
