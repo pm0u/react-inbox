@@ -29,9 +29,9 @@ class Toolbar extends Component {
           </button>
           {this.makeUnread()}
 
-          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >Mark As Read</button>
+          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} id='read' onClick={this.props.changeReadState}>Mark As Read</button>
 
-          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >Mark As Unread</button>
+          <button className="btn btn-default" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} id='unread' onClick={this.props.changeReadState}>Mark As Unread</button>
 
           <select className="form-control label-select" {...(!this.props.howSelected().includes('some') && {disabled:'disabled'})} >
             <option>Apply label</option>
