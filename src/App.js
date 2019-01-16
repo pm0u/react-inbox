@@ -43,8 +43,6 @@ class App extends Component {
           messageIds
         })
       })
-      //const json = await response.json()
-      //console.log(json)
     }
   }
 
@@ -117,13 +115,6 @@ class App extends Component {
     e.preventDefault()
     const body = e.target.body.value
     const subject = e.target.subject.value
-    const newMsg = {
-      body,
-      subject,
-    }
-    //this.setState(prevState => {
-    //  return {messages: [newMsg, ...prevState.messages]}
-    //}, this.sendMessage(newMsg))
     const response = await fetch('http://localhost:8082/api/messages', {
         method: 'POST',
         headers: {
