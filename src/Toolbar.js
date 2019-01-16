@@ -34,7 +34,7 @@ class Toolbar extends Component {
       <div className="row toolbar">
         <div className="col-md-12">
 
-          <a className="btn btn-danger">
+          <a className="btn btn-danger" onClick={this.props.toggleCompose}>
             <i className="fa fa-plus"></i>
           </a>
           <button className="btn btn-default" onClick={this.props.toggleAllSelect} >
