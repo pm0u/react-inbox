@@ -171,7 +171,7 @@ class App extends Component {
       return (
         <main>
       <div className='container'>
-          <Toolbar delMsg={this.delMsg} toggleCompose={this.toggleCompose} changeReadState={this.changeReadState} toggleAllSelect={this.toggleAllSelect} countUnread={this.countUnread} messages={this.state.messages} addLabel={this.addLabel} removeLabel={this.removeLabel}/>
+          <Toolbar compose={this.state.compose} delMsg={this.delMsg} toggleCompose={this.toggleCompose} changeReadState={this.changeReadState} toggleAllSelect={this.toggleAllSelect} countUnread={this.countUnread} messages={this.state.messages} addLabel={this.addLabel} removeLabel={this.removeLabel}/>
           {this.state.compose ? <Compose addMessage={this.addMessage}/> : null}
           <Inbox changeProp={this.changeProp} messages={this.state.messages}/>
         </div>

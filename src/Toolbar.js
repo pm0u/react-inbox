@@ -35,7 +35,7 @@ class Toolbar extends Component {
         <div className="col-md-12">
 
           <a className="btn btn-danger" onClick={this.props.toggleCompose}>
-            <i className="fa fa-plus"></i>
+            <i className={`fa ${this.props.compose? 'fa-minus' : 'fa-plus'}`}></i>
           </a>
           <button className="btn btn-default" onClick={this.props.toggleAllSelect} >
             <i className={`fa ${this.changeSelectIcon()}`}></i>
