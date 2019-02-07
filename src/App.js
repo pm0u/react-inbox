@@ -65,7 +65,7 @@ class App extends Component {
     this.setState(prevState => {
       return {
         messages: prevState.messages.map(message => {
-          if (message.selected) {
+          if (message.selected && !message.labels.includes(label)) {
             message.labels.push(label)
             msgIds.push(message.id)
           }
